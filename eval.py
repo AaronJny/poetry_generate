@@ -17,8 +17,12 @@ os.environ['CUDA_VISIBLE_DEVICES'] = ''
 
 x_data = tf.placeholder(tf.int32, [1, None])
 
+emb_keep = tf.placeholder(tf.float32)
+
+rnn_keep = tf.placeholder(tf.float32)
+
 # 验证用模型
-model = EvalModel(x_data)
+model = EvalModel(x_data, emb_keep, rnn_keep)
 
 saver = tf.train.Saver()
 # 单词到id的映射
@@ -60,14 +64,18 @@ def generate_poem():
         # 预测第一个词
         rnn_state = sess.run(model.cell.zero_state(1, tf.float32))
         x = np.array([[word2id_dict['s']]], np.int32)
-        prob, rnn_state = sess.run([model.prob, model.last_state], {model.data: x, model.init_state: rnn_state})
+        prob, rnn_state = sess.run([model.prob, model.last_state],
+                                   {model.data: x, model.init_state: rnn_state, model.emb_keep: 1.0,
+                                    model.rnn_keep: 1.0})
         word = generate_word(prob)
         poem = ''
         # 循环操作，直到预测出结束符号‘e’
         while word != 'e':
             poem += word
             x = np.array([[word2id_dict[word]]])
-            prob, rnn_state = sess.run([model.prob, model.last_state], {model.data: x, model.init_state: rnn_state})
+            prob, rnn_state = sess.run([model.prob, model.last_state],
+                                       {model.data: x, model.init_state: rnn_state, model.emb_keep: 1.0,
+                                        model.rnn_keep: 1.0})
             word = generate_word(prob)
         # 打印生成的诗歌
         print poem
@@ -93,8 +101,13 @@ def generate_acrostic(head):
             while word != '，' and word != '。':
                 poem += word
                 x = np.array([[word2id_dict[word]]])
-                prob, rnn_state = sess.run([model.prob, model.last_state], {model.data: x, model.init_state: rnn_state})
+                prob, rnn_state = sess.run([model.prob, model.last_state],
+                                           {model.data: x, model.init_state: rnn_state, model.emb_keep: 1.0,
+                                            model.rnn_keep: 1.0})
                 word = generate_word(prob)
+                if len(poem) > 25:
+                    print 'bad.'
+                    break
             # 根据单双句添加标点符号
             if cnt & 1:
                 poem += '，'
@@ -103,8 +116,9 @@ def generate_acrostic(head):
             cnt += 1
         # 打印生成的诗歌
         print poem
+        return poem
 
 
 if __name__ == '__main__':
-    # generate_acrostic(u'天空')
+    # generate_acrostic(u'神策')
     generate_poem()

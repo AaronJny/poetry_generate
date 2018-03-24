@@ -32,10 +32,12 @@ python train.py
 python eval.py
 ```
 
-结果示例：
+结果示例1：
 
 > 树阴飞尽水三依，谩自为能厚景奇。
 莫怪仙舟欲西望，楚人今此惜春风。
+
+结果示例2：
 
 > 岩外前苗点有泉，紫崖烟霭碧芊芊。
 似僧月明秋更好，一踪颜事欲犹伤？
@@ -48,7 +50,7 @@ python eval.py
 
 ```python
 if __name__ == '__main__':
-    # generate_acrostic(u'天空')
+    # generate_acrostic(u'神策')
     generate_poem()
 ```
 
@@ -56,7 +58,7 @@ if __name__ == '__main__':
 
 ```python
 if __name__ == '__main__':
-    generate_acrostic(u'天空')
+    generate_acrostic(u'神策')
     # generate_poem()
 ```
 
@@ -66,7 +68,10 @@ if __name__ == '__main__':
 python eval.py
 ```
 
-结果示例：
+结果示例1：
 
-> 天序曾柏乌倾鱼，空老桐歌尘翁红。
+> 神照隆祭测馨尘，策紫珑氲羽团娟。
 
+结果示例2：
+
+> 神辇莺满花台潭，策穷渐见仙君地。
