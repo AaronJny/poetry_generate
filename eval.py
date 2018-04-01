@@ -13,7 +13,7 @@ import utils
 import os
 
 # 指定验证时不使用cuda，这样可以在用gpu训练的同时，使用cpu进行验证
-os.environ['CUDA_VISIBLE_DEVICES'] = ''
+# os.environ['CUDA_VISIBLE_DEVICES'] = ''
 
 x_data = tf.placeholder(tf.int32, [1, None])
 
@@ -120,5 +120,5 @@ def generate_acrostic(head):
 
 
 if __name__ == '__main__':
-    # generate_acrostic(u'神策')
-    generate_poem()
+    generate_acrostic(u'天空')
+    # generate_poem()

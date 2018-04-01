@@ -50,7 +50,7 @@ python eval.py
 
 ```python
 if __name__ == '__main__':
-    # generate_acrostic(u'神策')
+    # generate_acrostic(u'天空')
     generate_poem()
 ```
 
@@ -58,7 +58,7 @@ if __name__ == '__main__':
 
 ```python
 if __name__ == '__main__':
-    generate_acrostic(u'神策')
+    generate_acrostic(u'天空')
     # generate_poem()
 ```
 
@@ -68,10 +68,7 @@ if __name__ == '__main__':
 python eval.py
 ```
 
-结果示例1：
+结果示例：
 
-> 神照隆祭测馨尘，策紫珑氲羽团娟。
+> 天序曾柏乌倾鱼，空老桐歌尘翁红。
 
-结果示例2：
-
-> 神辇莺满花台潭，策穷渐见仙君地。
