@@ -1,3 +1,16 @@
+此项目使用Python2.7+TensorFlow 1.4编写，环境太过古老，可能无法正常运行起来。
+
+如有需要，请移步我使用Python 3.7 + TensorFlow 2.0重写的版本：
+
+[DeepLearningExamples/tf2-rnn-poetry-generator](https://github.com/AaronJny/DeepLearningExamples/tree/master/tf2-rnn-poetry-generator)
+
+以及BERT版本的：
+
+[DeepLearningExamples/keras-bert-poetry-generator](https://github.com/AaronJny/DeepLearningExamples/tree/master/keras-bert-poetry-generator)
+
+
+-------------------------
+
 # 基于循环神经网络(RNN)的古诗生成器
 
 项目基于循环神经网络，使用tensorflow 1.4实现。训练数据为四万多首古诗，
